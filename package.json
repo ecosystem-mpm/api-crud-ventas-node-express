@@ -1,0 +1,36 @@
+{
+  "name": "api-para-ventas",
+  "version": "1.0.0",
+  "description": "APi para gestionar base de datos de ventas",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/profcswni/api-para-ventas.git"
+  },
+  "keywords": [
+    "ventas",
+    "compras",
+    "sistema",
+    "base",
+    "de",
+    "datos",
+    "html",
+    "css."
+  ],
+  "author": "Carlos Andres Perez Ubeda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/profcswni/api-para-ventas/issues"
+  },
+  "homepage": "https://github.com/profcswni/api-para-ventas#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.10.1",
+    "nodemon": "^3.1.3"
+  }
+}
