@@ -12,7 +12,7 @@ API de ejemplo para gestionar VENTAS de productos.
 
 ## Instalación
 
-1. Clonar el repositorio
+1. Clonar el repositorio con `git clone https://github.com/profcswni/api-para-ventas.git`
 2. Instalar las dependencias con `npm install`
 3. Exportar la base de datos `ventas.sql` usando HeidiSQL o cualquier otro gestor de bases de datos
 4. Configurar las credenciales de la base de datos en el archivo `config.js` de acuerdo a su entorno
