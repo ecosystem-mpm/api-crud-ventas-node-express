@@ -1,10 +1,10 @@
-const mysql = require('mysql2');
+import { createConnection } from 'mysql2';
 
-const config = mysql.createConnection({
+const config = createConnection({
     host: '127.0.0.1',
     user: 'root',
     password: 'carlos2024',
-    database: 'ventas_api',
+    database: 'api_ventas',
     port: 3306
 })
 
@@ -18,4 +18,4 @@ config.connect(function (err) {
 })
 
 
-module.exports = config;
+export default config;
