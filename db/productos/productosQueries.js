@@ -23,8 +23,6 @@ const listarTodosProductosQuery = () => {
 
 /**
  * Buscar un producto por su ID (llave primaria)
- * @param {number} id
- * @returns 
  */
 const listarProductoPorIdQuery = (id) => {
     return new Promise((resolve, reject) => {
@@ -42,8 +40,6 @@ const listarProductoPorIdQuery = (id) => {
 
 /**
  * Guardar un nuevo producto
- * @param {datos del producto} producto 
- * @returns 
  */
 const crearProductoQuery = async (producto) => {
     const { nombre, codigo, precio, disponible } = producto;
@@ -60,10 +56,7 @@ const crearProductoQuery = async (producto) => {
 };
 
 /**
- * 
- * @param {id del producto a modificar} id 
- * @param {datos del producto actualizados } producto 
- * @returns 
+ * Actualizar un producto por su ID
  */
 const actualizarProductoQuery = (id, producto) => {
     const { nombre, codigo, precio, disponible } = producto;
@@ -81,8 +74,6 @@ const actualizarProductoQuery = (id, producto) => {
 
 /**
  * Eliminar un producto por su ID
- * @param {id del producto a eliminar} id 
- * @returns 
  */
 const eliminarProductoQuery = (id) => {
     return new Promise((resolve, reject) => {

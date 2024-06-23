@@ -8,8 +8,6 @@ import {
 
 /**
  * Obtener todos los productos de la base de datos
- * @param {*} req 
- * @param {*} res 
  */
 const listarTodosProductos = async (req, res) => {
   // Un bloque try-catch  sirve para validar si la peticion se obtiene o se devuelve un error
@@ -41,9 +39,7 @@ const listarProductoPorId = async (req, res) => {
 };
 
 /**
- * Crear un producto 
- * @param {*} req 
- * @param {*} res 
+ * Crear un producto
  */
 const crearProducto = async (req, res) => {
   console.log(req.body)
@@ -58,8 +54,6 @@ const crearProducto = async (req, res) => {
 
 /**
  * Actualizar los datos de un producto
- * @param {*} req 
- * @param {*} res 
  */
 const actualizarProducto = async (req, res) => {
   try {
@@ -78,8 +72,6 @@ const actualizarProducto = async (req, res) => {
 
 /**
  * Eliminar un producto
- * @param {*} req 
- * @param {*} res 
  */
 const eliminarProducto = async (req, res) => {
   try {
