@@ -8,7 +8,7 @@ const listarTodosProductosQuery = () => {
     // Si la consulta no genera error, entonces resuelve/cumple la promesa con el resultado
     // Si hay algun error entonces rechaza la consulta e informa la razón 
     return new Promise((resolve, reject) => {
-        config.query('SELECT * FROM productos LIMIT 0,10', (err, filas) => {
+        config.query('SELECT * FROM productos', (err, filas) => {
             // Si genera error, mostramos en la consola que es lo que falla
             if (err) {
                 console.log(err);

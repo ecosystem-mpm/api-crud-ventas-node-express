@@ -21,16 +21,16 @@ API de ejemplo para gestionar VENTAS de productos.
 ## Uso
 
 1. Abrir el navegador web
-2. Acceder a la URL `http://localhost:3000`
+2. Acceder a la URL `https://ventas-api.cperezni.com`
 3. Probar los endpoints de la API
 
-## Lista de endpoints
+## Lista de endpoints (productos)
 
-- GET `http://localhost:3000/productos` 
-- GET `http://localhost:3000/productos/:id`
-- POST `http://localhost:3000/productos`
-- PUT `http://localhost:3000/productos/:id`
-- DELETE `http://localhost:3000/productos/:id`
+- GET `https://ventas-api.cperezni.com/productos` 
+- GET `https://ventas-api.cperezni.com/productos/:id`
+- POST `https://ventas-api.cperezni.com/productos`
+- PUT `https://ventas-api.cperezni.com/productos/:id`
+- DELETE `https://ventas-api.cperezni.com/productos/:id`
 
 ## TODO
 
@@ -47,4 +47,4 @@ API de ejemplo para gestionar VENTAS de productos.
 
 ## Autor
 
-- [Carlos Andres Perez Ubeda](https://cperezni.com)
+- [Carlos Andres Perez Úbeda](https://cperezni.com)

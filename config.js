@@ -1,20 +1,37 @@
-import { createConnection } from 'mysql2';
+import {createConnection, createPool} from 'mysql2';
 
-const config = createConnection({
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'carlos2024',
+// Create a pool to avoid the overhead of creating a new connection every time one is needed
+
+
+const config = createPool({
+    host: 'mariadb', // localhost en cada PC
+    user: 'cswni',
+    password: 'cswni',
     database: 'api_ventas',
-    port: 3306
+    port: 3306,
+    keepAliveInitialDelay: 300000,
+    enableKeepAlive: true,
 })
 
-//Validar la conexión a la base de datos
-config.connect(function (err) {
+// Validate the connection
+
+config.getConnection((err, connection) => {
     if (err) {
-        console.error('Error de conexión: ' + err.stack);
-        return;
+        console.error('ERROR: ', err);
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+            console.error('La conexión a la base de datos fue cerrada.');
+        }
+        if (err.code === 'ER_CON_COUNT_ERROR') {
+            console.error('La base de datos tiene muchas conexiones.');
+        }
+        if (err.code === 'ECONNREFUSED') {
+            console.error('La conexión a la base de datos fue rechazada.');
+        }
     }
-    console.log('Conexión exitosa con el id ' + config.threadId);
+    if (connection) {
+        connection.release();
+    }
+    return;
 })
 
 
