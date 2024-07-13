@@ -1,4 +1,4 @@
-name: MPM-SERVER Build
+name: API para ventas
 on:
   push:
     branches:
@@ -21,12 +21,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Enviando al servidor de produccion generico
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+
+      - name: Copy dotenv file
+        run: php -r "file_put_contents(__DIR__ . '/.env.production', '${{ secrets.DOT_ENV }}');"
+
+
+      - name: Enviando al servidor de produccion
         uses: burnett01/rsync-deployments@7.0.1
         with:
           legacy_allow_rsa_hostkeys: true
           remote_key: ${{ secrets.KEY }}
-          switches: '-avzh --delete --include="*.htaccess" --exclude=".*" --exclude="node_modules"'
+          switches: '-avzh --delete --include="*.env.production" --exclude=".*" --exclude="node_modules"'
           remote_port: ${{ secrets.PORT }}
           path: "./"
           remote_host: ${{ secrets.HOST }}
