@@ -1,0 +1,43 @@
+#CONTAINER FOR SERVE A REACT APP AND EXPRESS API
+version: '3.11'
+services:
+    mariadb-ventas-api:
+        image: mariadb:10.7
+        environment:
+            MYSQL_ROOT_PASSWORD: 'cswni'
+            MARIADB_DATABASE: 'api_ventas'
+            MARIADB_USER: 'cswni'
+            MARIADB_PASSWORD: 'cswni'
+        volumes:
+            - mariadb_mpm:/var/lib/mysql
+        networks:
+            - traefik-net
+
+    api:
+      image: node:lts
+      command: npm run dev
+      deploy:
+          labels:
+              - traefik.enable=true
+              - traefik.constraint-label=traefik-net
+              - traefik.http.routers.api.rule=Host(`ventas-api.cperezni.com`)
+              - traefik.http.routers.api.entrypoints=http
+              - traefik.http.services.api.loadbalancer.server.port=3000
+              - traefik.http.services.api.loadbalancer.server.scheme=http
+      networks:
+          - traefik-net
+      dns:
+        - 8.8.8.8
+      volumes:
+        - /var/www/apps/ventas-api:/usr/src/app
+      working_dir: /usr/src/app/
+      depends_on:
+          - mariadb-ventas-api
+
+
+networks:
+    traefik-net:
+        external: true
+
+volumes:
+    mariadb_mpm:

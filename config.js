@@ -4,7 +4,7 @@ import {createConnection, createPool} from 'mysql2';
 
 
 const config = createPool({
-    host: 'mariadb', // localhost en cada PC
+    host: 'mariadb-ventas-api', // localhost en cada PC / mariadb
     user: 'cswni',
     password: 'cswni',
     database: 'api_ventas',
