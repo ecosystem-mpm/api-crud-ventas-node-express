@@ -21,13 +21,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Rename .env.prod to .env
+        run: mv .env.prod .env
 
       - name: Enviando al servidor de produccion
         uses: burnett01/rsync-deployments@7.0.1
         with:
           legacy_allow_rsa_hostkeys: true
           remote_key: ${{ secrets.KEY }}
-          switches: '-avzh --delete --exclude=".*" --include=".env" --include=".env.prod" --exclude="node_modules"'
+          switches: '-avzh --delete --exclude=".*" --include=".env" --exclude="node_modules"'
           remote_port: ${{ secrets.PORT }}
           path: "./"
           remote_host: ${{ secrets.HOST }}
