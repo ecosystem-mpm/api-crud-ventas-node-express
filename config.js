@@ -1,11 +1,13 @@
 import {createPool} from 'mysql2';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const configBase = createPool({
-    host: 'mariadb', // localhost en cada PC / mariadb
-    user: 'cswni',
-    password: 'cswni',
-    database: 'api_ventas',
-    port: 3306,
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT,
     keepAliveInitialDelay: 300000,
     enableKeepAlive: true,
 })

@@ -5,7 +5,7 @@ cd /var/www/apps/ventas-api
 
 chmod +x deploy.sh
 
-docker service create --name npm_INSTALL --restart-condition none --mount type=bind,source=$(pwd),target=/usr/src/app node:lts /bin/bash -c 'cd /usr/src/app && npm install > /dev/null'
+docker service create --name npm_INSTALL --workdir /usr/src/app --restart-condition none --mount type=bind,source=$(pwd),target=/usr/src/app node:lts /bin/bash -c 'npm install'
 
 # Esperar a que se complete el servicio
 SERVICE_NAME="npm_INSTALL"
