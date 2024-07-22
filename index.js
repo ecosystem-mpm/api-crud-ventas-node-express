@@ -1,28 +1,38 @@
-//Crear la instancia de express
 import express from 'express';
-import cors from 'cors'
+import cors from 'cors';
 
 // Importar las rutas
-import productosRouter from './routes/productos/productosRoutes.js'; 
+import productosRouter from './routes/productos/productosRoutes.js';
+import authRouter from "./routes/auth/authRoutes.js";
 
-//Crear la app de express
+// Crear la app de express
 const app = express();
 
-//Habilitar la captura de datos mediante post / formularios
-app.use(express.json())
+// Habilitar la captura de datos mediante post / formularios
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Habilitar CORS para permitir las llamadas de otro servidor
-// distinto a este (localhost:3000).
-app.use(cors())
+const corsOptions = {
+    origin: 'http://web.santarosadev.xyz', // Adjust as needed
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
+    exposedHeaders: 'Content-Length,X-Knowledge',
+    credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
-//Configurar el puerto
+// Apply CORS middleware globally
+app.use(cors(corsOptions));
+
+// Configurar el puerto
 const port = 3000;
 
-//Usar las rutas
+// Usar las rutas
+app.use('/auth', authRouter); // AUTH
 app.use('/productos', productosRouter); // PRODUCTOS
 
-//Levantar el servidor en el puerto 3000
+// Levantar el servidor en el puerto 3000
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port}`);
 });

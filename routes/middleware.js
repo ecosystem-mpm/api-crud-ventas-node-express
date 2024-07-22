@@ -1,0 +1,24 @@
+// File: `api-para-ventas/middleware/authMiddleware.js`
+import jwt from 'jsonwebtoken';
+
+const verifyToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    if (!authHeader) {
+        return res.status(403).send('Necesitas iniciar sesión para acceder a la API.');
+    }
+
+    const token = authHeader.split(' ')[1];
+    if (!token) {
+        return res.status(403).send('No se ha proporcionado un token de acceso.');
+    }
+
+    jwt.verify(token, 'secretKeyForToken', (err, decoded) => {
+        if (err) {
+            return res.status(401).send('Token inválido o sesión expirada.');
+        }
+        req.user = decoded;
+        next();
+    });
+};
+
+export default verifyToken;
