@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 // Importar las rutas
 import productosRouter from './routes/productos/productosRoutes.js';
 import authRouter from "./routes/auth/authRoutes.js";
@@ -13,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-    origin: 'http://web.santarosadev.xyz', // Adjust as needed
+    origin: process.env.CORS_ORIGIN,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
     exposedHeaders: 'Content-Length,X-Knowledge',
