@@ -36,7 +36,6 @@ services:
       depends_on:
           - mariadb-ventas-api
 
-
 networks:
     traefik-net:
         external: true
