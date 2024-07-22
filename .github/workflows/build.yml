@@ -27,7 +27,7 @@ jobs:
         with:
           legacy_allow_rsa_hostkeys: true
           remote_key: ${{ secrets.KEY }}
-          switches: '-avzh --delete --include="*.env.production" --exclude=".*" --exclude="node_modules"'
+          switches: '-avzh --delete --include="*.env.production" --exclude="node_modules"'
           remote_port: ${{ secrets.PORT }}
           path: "./"
           remote_host: ${{ secrets.HOST }}
